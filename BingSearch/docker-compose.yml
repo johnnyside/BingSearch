@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  bingsearch:
+    build:
+      context: .
+      dockerfile: dockerfile.headless
+    container_name: bingsearch-headless
+#    restart: unless-stopped
+    environment:
+      DOTNET_PRINT_TELEMETRY_MESSAGE: "false"
+    volumes:
+      - ./output:/app/output       # Récupérer screenshots ou traces Playwright
+    command: dotnet BingSearch.dll
